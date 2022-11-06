@@ -3,10 +3,10 @@ import signal
 import serial
 
 
-file_name = "collected.csv"
+file_name = "collected"
 data = []
 def write_file():
-    with open("../data/collected.csv", "w") as f:
+    with open("../data/{}.csv".format(file_name), "w") as f:
         for line in data:
             f.write(line + "\n")
         f.close()
