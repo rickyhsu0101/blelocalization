@@ -14,7 +14,7 @@ def GetDataFromFile(file_name, artif):
     return data, norm
 
 def model(x, y):
-    S = SVC(C = 10, kernel ="poly", gamma = "auto", degree = 8)
+    S = SVC(C = 1e-10, kernel ="linear", gamma = "auto", degree = 3)
     S.fit(x, y)
     return S
 
