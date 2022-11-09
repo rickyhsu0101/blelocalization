@@ -34,8 +34,11 @@ if __name__ == "__main__":
 
     data_test[:,:12] = data_test[:,:12] / norm.reshape((1,12))
     S = model(data[:,:-1], data[:,-1])
-    print(S.predict(data_test[:, :14]))
-    print(data_test[:,14])
+    predict_labels = S.predict(data_test[:, :14])
+    print(predict_labels)
+    actual_labels = data_test[:,14]
+    print(actual_labels)
+    print(np.sum(predict_labels == actual_labels))
     #print(norm)
 
 
