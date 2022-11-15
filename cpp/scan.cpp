@@ -106,7 +106,7 @@ bool pull_data = false;
 void ButtonPressed(void){
     LOG("%d\n", counter);
     ++counter;
-    pull_data = true;
+    pull_data = !pull_data;
 }
 int main()
 {
