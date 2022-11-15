@@ -14,9 +14,20 @@ def GetDataFromFile(file_name, artif):
     return data, norm
 
 def model(x, y):
-    S = SVC(C = 1e-10, kernel ="linear", gamma = "auto", degree = 3)
+    S = SVC(C = 1, kernel ="linear", gamma = "auto", degree = 3)
     S.fit(x, y)
     return S
+def turn_x_y(element):
+    return (int(element/5), int(element % 5))
+def within_x_loop(arr, x, lab):
+    n = np.zeros(arr.shape)
+    for i in range(arr.shape[0]):
+        curr = turn_x_y(lab[i])
+        for j in range(arr.shape[1]):
+            element  = arr[i, j]
+            if abs(curr[0] - element[0]) + abs(curr[1] - element[1]) <= x:
+                n[i, j] = 1
+    return n
 
 if __name__ == "__main__":
     #GenerateDirection()
@@ -33,12 +44,24 @@ if __name__ == "__main__":
     data_test, _ = GetDataFromFile(args.test, '')
 
     data_test[:,:12] = data_test[:,:12] / norm.reshape((1,12))
-    S = model(data[:,:-1], data[:,-1])
-    predict_labels = S.predict(data_test[:, :14])
+    S = model(data[:,:14], data[:,-1])
+    predict_labels = S.predict(data_test[:, :14]).reshape(4,1)
+    #predict_labels = S.predict(data[:, :14]).reshape(25,4)
+    turn_x_y_vec = np.vectorize(turn_x_y, otypes=[tuple])
+    predict_labels = turn_x_y_vec(predict_labels)
+    print(predict_labels.shape)
     print(predict_labels)
-    actual_labels = data_test[:,14]
+    actual_labels = data[:,14]
     print(actual_labels)
-    print(np.sum(predict_labels == actual_labels))
+    #print(np.sum(predict_labels))
+    #predict_labels = within_x_loop(predict_labels, 0, list(range(25)))
+    predict_labels = within_x_loop(predict_labels, 1, [8,1,15,19])
+    print(predict_labels)
+    print(np.sum(predict_labels))
+    # predict_labels = within_x_loop(predict_labels, 2)
+    # print(np.sum(predict_labels))
+
+
     #print(norm)
 
 

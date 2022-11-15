@@ -9,7 +9,7 @@ def GetDataFromFile(file_names):
     y = None
     ori = None
     for file_name in file_names:
-        f = pd.read_csv('../data/' + file_name + '_complete.csv')
+        f = pd.read_csv('../data/' + file_name + '.csv')
         f = f.to_numpy()
         curr_data = f[:, :3]
 
@@ -41,7 +41,6 @@ def GetDataFromFile(file_names):
     
     # normalize first 12 columns (normalize per column)
     norm = np.linalg.norm(data, axis = 0)[:12]
-    data[:,:12] = data[:,:12] / norm
     
     return data, norm
 
