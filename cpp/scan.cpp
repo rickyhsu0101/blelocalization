@@ -35,7 +35,7 @@
 #define CHANNEL_2 26
 #define CHANNEL_3 80
 
-#define SAMPLE_SIZE 10
+#define SAMPLE_SIZE 50
 
 InterruptIn button(BUTTON_PIN);
 
@@ -43,15 +43,16 @@ Serial pc(UART_TX, UART_RX);
 
 BLEDevice ble;
 
-int channel_to_rssi[3][2];
+int channel_to_rssi[3][SAMPLE_SIZE]; //[2];
 
 int channel_counter[3];
 
 int counter = 0;
 
+int num_samples = 0;
 void initialize(){
     for(int i = 0; i < 3; ++i){
-        for(int j = 0; j < 2; ++j){
+        for(int j = 0; j < SAMPLE_SIZE; ++j){
             channel_to_rssi[i][j] = 0;
         }
         channel_counter[i] = 0;
@@ -75,12 +76,15 @@ void scanCallback(const Gap::AdvertisementCallbackParams_t *params){
     sprintf(p, "%02x:%02x:%02x:%02x:%02x:%02x\0",
        params->peerAddr[5], params->peerAddr[4], params->peerAddr[3], params->peerAddr[2], params->peerAddr[1], params->peerAddr[0]);
     if(strcmp(p, addr) == 0){
-        if(channel_counter[getChannelIndex(NRF_RADIO_FREQUENCY)] < SAMPLE_SIZE){
-            channel_to_rssi[getChannelIndex(NRF_RADIO_FREQUENCY)][0] += (int)params->rssi;
-            ++channel_to_rssi[getChannelIndex(NRF_RADIO_FREQUENCY)][1];
-            ++channel_counter[getChannelIndex(NRF_RADIO_FREQUENCY)];
-           //  LOG("Channel:%d RSSI: %d\n", NRF_RADIO_FREQUENCY, (int)params->rssi);
-        }
+        //int ch_ind = getChannelIndex(NRF_RADIO_FREQUENCY);
+        ++num_samples;
+        LOG("%d,%d",(int)params->rssi, NRF_RADIO_FREQUENCY);
+        // if(channel_counter[ch_ind] < SAMPLE_SIZE) {
+        //     channel_to_rssi[ch_ind][channel_counter[ch_ind]] = (int)params->rssi; //[0] += (int)params->rssi;
+        //     // ++channel_to_rssi[ch_ind][1];
+        //     ++channel_counter[ch_ind];
+        //    //  LOG("Channel:%d RSSI: %d\n", NRF_RADIO_FREQUENCY, (int)params->rssi);
+        // }
        
     }
    
@@ -123,7 +127,7 @@ int main()
         if(pull_data){
             initialize();
             ble_error_t error;
-            while(channel_counter[0] != SAMPLE_SIZE || channel_counter[1] != SAMPLE_SIZE || channel_counter[2] != SAMPLE_SIZE){
+            while(num_samples < SAMPLE_SIZE){
                 error = ble.gap().startScan(&scanCallback);
                 if(error){
                     LOG("Start Scan Error \n");
@@ -132,11 +136,9 @@ int main()
                 wait_ms(5000);
                 
                 ble.gap().stopScan();
-                if(channel_counter[0] == SAMPLE_SIZE && channel_counter[1] == SAMPLE_SIZE && channel_counter[2] == SAMPLE_SIZE){
-                    LOG("%f,%f,%f\n", (double)channel_to_rssi[getChannelIndex(CHANNEL_1)][0] / channel_to_rssi[getChannelIndex(CHANNEL_1)][1], (double)channel_to_rssi[getChannelIndex(CHANNEL_2)][0] / channel_to_rssi[getChannelIndex(CHANNEL_2)][1], (double)channel_to_rssi[getChannelIndex(CHANNEL_3)][0] / channel_to_rssi[getChannelIndex(CHANNEL_3)][1]);
-                    pull_data = false;
-                }
             }
+            num_samples = 0;
+            pull_data = false;
             
         }
     
