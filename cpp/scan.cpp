@@ -35,13 +35,17 @@
 #define CHANNEL_2 26
 #define CHANNEL_3 80
 
-#define SAMPLE_SIZE 50
+#define SAMPLE_SIZE 100
 
 InterruptIn button(BUTTON_PIN);
 
 Serial pc(UART_TX, UART_RX);
 
 BLEDevice ble;
+
+DigitalOut blue(LED_BLUE);
+DigitalOut green(LED_GREEN);
+DigitalOut red(LED_RED);
 
 int channel_to_rssi[3][SAMPLE_SIZE]; //[2];
 
@@ -116,7 +120,9 @@ int main()
 {
     
     wait(1);
-    
+    blue = 0;
+    green = 1;
+    red = 1;
 
     LOG("Initialising the nRF51822 Scan ? \n");
 

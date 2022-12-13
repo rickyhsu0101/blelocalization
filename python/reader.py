@@ -2,6 +2,8 @@ import argparse, sys
 import signal
 import serial
 
+from sklearnex import patch_sklearn
+patch_sklearn()
 
 file_name = "collected"
 device_number = 0
