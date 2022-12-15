@@ -1,0 +1,102 @@
+epoch: 0
+train accuracy: 0.210635 train loss: 277.6175465602428
+epoch: 1
+train accuracy: 0.366975 train loss: 244.38022817485034
+epoch: 2
+train accuracy: 0.425 train loss: 229.0112275071442
+epoch: 3
+train accuracy: 0.46011625 train loss: 218.9981567915529
+epoch: 4
+train accuracy: 0.4854925 train loss: 211.5366211682558
+epoch: 5
+train accuracy: 0.50339125 train loss: 205.82234273664653
+epoch: 6
+train accuracy: 0.5193525 train loss: 200.79921391047537
+epoch: 7
+train accuracy: 0.532555 train loss: 196.3952729217708
+epoch: 8
+train accuracy: 0.54306125 train loss: 192.74045778624713
+epoch: 9
+train accuracy: 0.551775 train loss: 189.5860239956528
+epoch: 10
+train accuracy: 0.558625 train loss: 187.10712792165577
+epoch: 11
+train accuracy: 0.56420625 train loss: 185.19190062396228
+epoch: 12
+train accuracy: 0.56929625 train loss: 183.36742982827127
+epoch: 13
+train accuracy: 0.573815 train loss: 181.57050440646708
+epoch: 14
+train accuracy: 0.57794875 train loss: 180.29619267955422
+epoch: 15
+train accuracy: 0.58112625 train loss: 178.8980031888932
+epoch: 16
+train accuracy: 0.5845925 train loss: 177.75296900141984
+epoch: 17
+train accuracy: 0.58730625 train loss: 176.71396141313016
+epoch: 18
+train accuracy: 0.589895 train loss: 175.72871293034405
+epoch: 19
+train accuracy: 0.5931925 train loss: 174.51150175649673
+epoch: 20
+train accuracy: 0.59478625 train loss: 173.6327888313681
+epoch: 21
+train accuracy: 0.5983025 train loss: 172.5573989059776
+epoch: 22
+train accuracy: 0.59991625 train loss: 171.9685149602592
+epoch: 23
+train accuracy: 0.60187125 train loss: 171.10250909533352
+epoch: 24
+train accuracy: 0.604775 train loss: 170.18629233911633
+epoch: 25
+train accuracy: 0.60751625 train loss: 169.1996910572052
+epoch: 26
+train accuracy: 0.6091475 train loss: 168.52228554803878
+epoch: 27
+train accuracy: 0.61013625 train loss: 168.1258338149637
+epoch: 28
+train accuracy: 0.61297625 train loss: 167.22014273051172
+epoch: 29
+train accuracy: 0.61551875 train loss: 166.2692177835852
+epoch: 30
+train accuracy: 0.6166275 train loss: 165.65673577226698
+epoch: 31
+train accuracy: 0.61853375 train loss: 164.9401248600334
+epoch: 32
+train accuracy: 0.6197125 train loss: 164.38885069079697
+epoch: 33
+train accuracy: 0.6208825 train loss: 163.73894516658038
+epoch: 34
+train accuracy: 0.62195375 train loss: 163.19145725294948
+epoch: 35
+train accuracy: 0.62361375 train loss: 162.6428105123341
+epoch: 36
+train accuracy: 0.624135 train loss: 162.1386038037017
+epoch: 37
+train accuracy: 0.6257825 train loss: 161.40368694346398
+epoch: 38
+train accuracy: 0.62666 train loss: 161.0846603475511
+epoch: 39
+train accuracy: 0.62832125 train loss: 160.40277828089893
+epoch: 40
+train accuracy: 0.62849125 train loss: 160.1294777309522
+epoch: 41
+train accuracy: 0.62980875 train loss: 159.61742764897645
+epoch: 42
+train accuracy: 0.63036875 train loss: 159.33489283453673
+epoch: 43
+train accuracy: 0.6312975 train loss: 158.94790574349463
+epoch: 44
+train accuracy: 0.63190125 train loss: 158.53720445372164
+epoch: 45
+train accuracy: 0.6329375 train loss: 158.01319882273674
+epoch: 46
+train accuracy: 0.63394125 train loss: 157.60386417713016
+epoch: 47
+train accuracy: 0.63368375 train loss: 157.49286888260394
+epoch: 48
+train accuracy: 0.6344675 train loss: 157.23020086903125
+epoch: 49
+train accuracy: 0.63499 train loss: 156.83345212507993
+
+test accuracy: 0.15888625 test loss: 35593.95212940872
